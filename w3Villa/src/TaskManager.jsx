@@ -108,6 +108,7 @@ function TaskManager() {
       }
   }
 
+  
   const handleSearch = (e) => {
       const term = e.target.value.toLowerCase();
       const oldTasks = [...copyTasks];
@@ -117,11 +118,11 @@ function TaskManager() {
   return (
 
       <div className='flex flex-col items-center
-      w-[50vw] m-auto mt-5 bg-red-300 '>
+      w-[50vw] m-auto my-5 bg-pink-300'>
           <h1 className='mb-4 text-2xl font-semibold'>Task Manager App</h1>
           {/* Input and Search box */}
-          <div className='flex items-center gap-2'>
-              <div className='flex items-center  '>
+          <div className='flex items-center gap-2 mb-5'>
+              <div className='flex items-center rounded-sm overflow-hidden  '>
                   <input type='text'
                       value={input}
                       onChange={
@@ -133,22 +134,23 @@ function TaskManager() {
                       onClick={handleTask}
                       className='bg-blue-600'
                   >
-                      <FaPlus className='m-2 ' />
+                      <FaPlus className='m-2 text-white' />
                   </button>
               </div>
 
-              <div className='flex items-center'>
-                  <span
-                      className='bg-blue-600 p-2 '
-                  >
-                      <FaSearch />
-                  </span>
+              <div className='flex items-center rounded-sm overflow-hidden  '>
+                  
                   <input
                       onChange={handleSearch}
                       className='form-control p-1 outline-none'
                       type='text'
                       placeholder='Search tasks'
                   />
+                  <span
+                      className='bg-blue-600 p-2 text-white '
+                  >
+                      <FaSearch />
+                  </span>
               </div>
           </div>
 
@@ -156,8 +158,7 @@ function TaskManager() {
           <div className='flex flex-col w-full'>
               {
                   tasks.map((item) => (
-                      <div key={item._id} className='m-2 p-2 border bg-light
-              w-100 rounded-3 flex  justify-between
+                      <div key={item._id} className='m-2 p-2 border border-black rounded-md flex  justify-between
               items-center'>
                           <span
                               className={item.isDone ? 'line-through' : ''}
@@ -168,23 +169,23 @@ function TaskManager() {
                               <button
                                   onClick={() => handleCheckAndUncheck(item)}
                                   className='btn btn-success
-                          btn-sm me-2'
+                          btn-sm me-2 '
                                   type='button'>
-                                  <FaCheck />
+                                  <FaCheck className="text-blue-600" />
                               </button>
                               <button
                                   onClick={() => setUpdateTask(item)}
                                   className='btn btn-primary
-                          btn-sm me-2'
+                          btn-sm me-2 '
                                   type='button'>
-                                  <FaPen />
+                                  <FaPen className="text-green-400"/>
                               </button>
                               <button
                                   onClick={() => handleDeleteTask(item._id)}
                                   className='btn btn-danger
                           btn-sm me-2'
                                   type='button'>
-                                  <FaTrash />
+                                  <FaTrash className="text-red-600"/>
                               </button>
                           </div>
                       </div>
